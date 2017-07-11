@@ -1,8 +1,7 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Write a short comment describing this function
-
+## makes a matrix and then solve function does inverse of matrix
 makecacheMatrix <- function (m = matrix()){
   inv <- NULL
   set <- function (y){
@@ -15,13 +14,23 @@ makecacheMatrix <- function (m = matrix()){
   ##creates a list of matrix so that $ operator can be used
   list (set =  set , get = get , 
         setinv = setinv , getinv = getinv)
+} 
 
-## Write a short comment describing this function
+## below function makes a fucntion to get inverse of any matrix getting defined
 
 cachesolve <- function (m = matrix(), ...){
     inv <- m$getinv()
     if (! is.null(inv)){
       message ("getting cached data")
-      retun (inv)
-      
+      retun (inv)   
     }
+   
+   ##return a mtarix that is inverse 
+    data <- m$get()
+    inv <- solve(data)
+    m$setinv(inv)
+    inv
+    
+  }
+
+  
